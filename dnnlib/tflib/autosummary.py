@@ -1,4 +1,4 @@
-﻿# Copyright (c) 2018, NVIDIA CORPORATION. All rights reserved.
+# Copyright (c) 2018, NVIDIA CORPORATION. All rights reserved.
 #
 # This work is licensed under the Creative Commons Attribution-NonCommercial
 # 4.0 International License. To view a copy of this license, visit
@@ -27,7 +27,7 @@ import numpy as np
 import tensorflow.compat.v1 as tf
 from tensorboard import summary as summary_lib
 from tensorboard.plugins.custom_scalar import layout_pb2
-
+from tensorboard.plugins.custom_scalar.summary import pb as custom_scalar_pb # new line
 from . import tfutil
 from .tfutil import TfExpression
 from .tfutil import TfExpressionEx
@@ -149,7 +149,7 @@ def finalize_autosummaries() -> None:
             margin = layout_pb2.MarginChartContent(series=series)
             charts.append(layout_pb2.Chart(title=chart_name, margin=margin))
         categories.append(layout_pb2.Category(title=cat_name, chart=charts))
-    layout = summary_lib.custom_scalar_pb(layout_pb2.Layout(category=categories))
+    layout = custom_scalar_pb(layout_pb2.Layout(category=categories))
     return layout
 
 def save_summaries(file_writer, global_step=None):
