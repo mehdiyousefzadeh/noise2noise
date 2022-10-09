@@ -11,7 +11,7 @@ import time
 
 import numpy as np
 # import tensorflow as tf
-import tensorflow.compat.v1 as tf
+import tensorflow.compat.v1 as tf # new line
 import scipy
 
 import dnnlib
@@ -21,7 +21,9 @@ import dnnlib.tflib.tfutil as tfutil
 
 import config_mri
 import util
-tf.disable_eager_execution() #new
+
+#Start new code
+tf.disable_eager_execution() 
 from PIL import Image
 _errstr = "Mode is unknown or incompatible with input array shape."
 def bytescale(data, cmin=None, cmax=None, high=255, low=0):
@@ -204,7 +206,7 @@ def toimage(arr, high=255, low=0, cmin=None, cmax=None, pal=None,
     # Here we know data and mode is correct
     image = Image.frombytes(mode, shape, strdata)
     return image
-
+#end - new code
 
 #----------------------------------------------------------------------------
 # The network.
